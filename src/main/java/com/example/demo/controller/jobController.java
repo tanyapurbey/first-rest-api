@@ -32,35 +32,35 @@ public class jobController {
     @GetMapping
     public ResponseEntity<List<JobDTO>> getAllJobs() {
         List<JobDTO> jobs = jobService.getAllJobs();
-        return ResponseEntity.ok(jobs); // Returns 200 OK with the list of jobs
+        return ResponseEntity.ok(jobs);
     }
 
     // GET http://localhost:8080/api/jobs/{id}
     @GetMapping("/{id}")
     public ResponseEntity<JobDTO> getJobById(@PathVariable int id) {
         JobDTO job = jobService.getJobById(id);
-        return ResponseEntity.ok(job); // Returns 200 OK with the found job
+        return ResponseEntity.ok(job);
     }
 
     //POST http://localhost:8080/api/jobs
     @PostMapping
     public ResponseEntity<JobDTO> createJob(@Valid @RequestBody JobDTO jobDTO) {
         JobDTO createdJob = jobService.createJob(jobDTO);
-        return new ResponseEntity<>(createdJob, HttpStatus.CREATED); // Returns 201 Created status
+        return new ResponseEntity<>(createdJob, HttpStatus.CREATED);
     }
 
     //PUT http://localhost:8080/api/jobs/{id}
     @PutMapping("/{id}")
     public ResponseEntity<JobDTO> updateJob(@PathVariable int id,@Valid @RequestBody JobDTO jobDTO) {
         JobDTO updatedJob = jobService.updateJob(id, jobDTO);
-        return ResponseEntity.ok(updatedJob); // Returns 200 OK with the updated data
+        return ResponseEntity.ok(updatedJob);
     }
 
     // PATCH http://localhost:8080/api/jobs/{id}
     @PatchMapping("/{id}")
     public ResponseEntity<JobDTO> patchJob(@PathVariable int id, @RequestBody JobDTO partialJobDTO) {
         JobDTO updatedJob = jobService.patchJob(id, partialJobDTO);
-        return ResponseEntity.ok(updatedJob); // Returns 200 OK with the partially updated job data
+        return ResponseEntity.ok(updatedJob);
     }
 
 
@@ -68,7 +68,7 @@ public class jobController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteJob(@PathVariable int id) {
         jobService.deleteJob(id);
-        return ResponseEntity.noContent().build(); // Returns 204 No Content (standard for successful deletes)
+        return ResponseEntity.noContent().build();
     }
 // search for title
 //    GET http://localhost:8080/api/jobs/search/title?title=Software Engineer
@@ -169,7 +169,7 @@ public class jobController {
     @DeleteMapping("/bulk")
     public ResponseEntity<Void> deleteJobsInBulk(@RequestBody List<Integer> ids) {
         jobService.deleteJobsInBulk(ids);
-        return ResponseEntity.noContent().build(); // Returns 204 No Content
+        return ResponseEntity.noContent().build();
     }
 
 //  bye bye all jobs
@@ -177,7 +177,7 @@ public class jobController {
     @DeleteMapping("/clear-all")
     public ResponseEntity<Void> clearAllJobs() {
         jobService.clearAllJobs();
-        return ResponseEntity.noContent().build(); // Returns 204 No Content
+        return ResponseEntity.noContent().build();
     }
 
 
